@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BeerCollection({ collection, pageCtrl }) {
+export default function BeerCollection({ collection, pageCtrl, page }) {
 const nextPg = () => {
   pageCtrl(1);
 }
@@ -19,7 +19,8 @@ const previousPg = () => {
         </div>
       })}
         <div className="pagination">
-          <div className="previous" onClick={previousPg}/>
+          {page !== 1 && <div className="previous" onClick={previousPg}/>}
+          <p>Page {page}</p>
             <div className="next" onClick={nextPg}/>
           </div>
     </div>

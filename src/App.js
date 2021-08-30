@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <BeerCollection collection={beers} pageCtrl={changePage} />
+      <BeerCollection collection={beers} pageCtrl={changePage} page={currentPage} />
     </div>
   );
 }
