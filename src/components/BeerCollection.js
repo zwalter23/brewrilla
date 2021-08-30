@@ -8,12 +8,12 @@ export default function BeerCollection({ collection }) {
           <div className="card">
         <p>{beer.name}</p>
         </div>
+        </div>
+      })}
         <div className="pagination">
           <div className="previous"/>
             <div className="next"/>
           </div>
-        </div>
-      })}
     </div>
   );
 }
