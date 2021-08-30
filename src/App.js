@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import BeerCollection from "./components/BeerCollection";
+import fetchData from "./components/fetchData";
 
 function App() {
+  const [beers, setBeerCollection] = useState([]);
+
+  useEffect(() => {
+    fetchData("https://api.punkapi.com/v2/beers?per_page=80").then((res) => {
+      setBeerCollection(res.data);
+    });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BeerCollection collection={beers} />
     </div>
   );
 }
