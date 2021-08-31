@@ -16,7 +16,7 @@ function App() {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6`
     fetchData(url).then((results) => { setBeerCollection(results.data) })
     setCurrentPage(page);
-  }
+  };
 
   const changePage = (step) => {
     if (parseInt(step) < 0) {
@@ -28,10 +28,31 @@ function App() {
     }
   };
 
+  const searchQuery = () => {
+    const query = document.getElementById("query");
+    const filter = document.getElementById("filters");
+    let url = "";
+
+    if (filter.value == "brewed_before") {
+      url = `https://api.punkapi.com/v2/beers?${filter.value}=12-${
+        query.value - 1
+      }`;
+    } else if (filter.value == "brewed_after") {
+      url = `https://api.punkapi.com/v2/beers?${filter.value}=01-${query.value}`;
+    } else {
+      url = `https://api.punkapi.com/v2/beers?${filter.value}=${query.value}`;
+    }
+
+    fetchData(url).then((results) => {
+      setBeerCollection(results.data);
+      console.log(results.data);
+    });
+  };
+
   return (
     <Router>
       <Route path="/" exact render={() => <div className="App">
-        <BeerCollection collection={beers} pageCtrl={changePage} page={currentPage} />
+        <BeerCollection collection={beers} pageCtrl={changePage} page={currentPage} search={searchQuery} />
       </div>}>
       </Route>
       <Route
