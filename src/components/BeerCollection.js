@@ -18,24 +18,29 @@ export default function BeerCollection({
   };
 
   return (
-    <div>
-      <Search search={search} />
-      {collection.map((beer) => {
-        return (
+    <>
+      <div className="beer_collection">
+        <div className="page_content">
+         <Search search={search} />
           <div className="cards">
-            <div className="card">
-              <Link className="hideDecor" to={`/${beer.id}`}>
-                {beer.name}
-              </Link>
-            </div>
+            {collection.map((beer) => {
+              return (
+                <div className="card">
+                  <div className="content">
+                     <Link to={`/${beer.id}`}>{beer.name}</Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-      <div className="pagination">
-        {page !== 1 && <div className="previous" onClick={previousPg} />}
-        <p>Page {page}</p>
-        <div className="next" onClick={nextPg} />
+        </div>
+
+        <div className="pagination">
+          {page !== 1 && <div className="previous" onClick={previousPg} />}
+          <p>Page {page}</p>
+          <div className="next" onClick={nextPg} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

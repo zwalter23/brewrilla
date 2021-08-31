@@ -4,16 +4,73 @@
   box-sizing: border-box;
 }
 
-body {
+.layout {
   height: 100vh;
-  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.navbar {
+  background-color: rgb(199, 199, 199);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.beer_collection {
+  background-color: rgb(122, 122, 122);
+  display: flex;
+  padding-left: 20px;
+}
+
+.page_content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search_bar {
+  background-color: burlywood;
+  height: 30px;
+  width: 30%;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 10px;
+}
+
+.card {
+  width: 350px;
+  height: 250px;
+  position: relative;
+  padding: 5%;
+  box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: rgb(240, 57, 87, 0.4);
+  overflow: hidden;
+  display: flex;
+  border-top: 1px solid rgb(240, 57, 87, 0.5);
+  border-left: 1px solid rgb(240, 57, 87, 0.5);
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
 }
 
 .pagination div {
   background-color: #ffffff;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  height: 200px;
+  width: 20px;
   position: relative;
 }
 
@@ -30,7 +87,7 @@ body {
   content: ">";
 }
 
-.hideDecor {
+.card .content a {
   color: black;
   text-decoration: none;
 }

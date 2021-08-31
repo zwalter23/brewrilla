@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BeerCollection from "./components/BeerCollection";
 import { BeerDetails } from "./components/BeerDetails";
 import fetchData from "./components/fetchData";
@@ -33,31 +33,41 @@ function App() {
   };
 
   const searchQuery = () => {
-    let filter = "";
-    if (filter.value === "brewed_before") {
-      filter = `${document.getElementById("filters").value}=12-${
-        document.getElementById("query").value - 1
+    let filterToPass = "";
+    const filterValue = document.getElementById("filters").value;
+    const queryValue =  document.getElementById("query").value;
+    
+    if (filterValue === "brewed_before") {
+      filterToPass = `${filterValue}=12-${
+        queryValue - 1
       }`;
-    } else if (filter.value === "brewed_after") {
-      filter = `${document.getElementById("filters").value}=01-${
-        document.getElementById("query").value
+    } else if (filterValue === "brewed_after") {
+      filterToPass = `${filterValue}=01-${
+        queryValue
       }`;
     } else {
-      filter = `${document.getElementById("filters").value}=${
-        document.getElementById("query").value
+      filterToPass = `${filterValue}=${
+        queryValue
       }`;
     }
-    setFilter(filter);
-    getBeersByPage(1, filter);
+    setFilter(filterToPass);
+    getBeersByPage(1, filterToPass);
   };
 
   return (
     <Router>
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <div className="App">
+      <div className="layout">
+        <div className="navbar">
+          <Link to="/random">Random beer</Link>
+          <p>Menu2</p>
+          <p>Menu3</p>
+          <p>Menu4</p>
+          <p>Menu5</p>
+        </div>
+        <Route
+          path={"/"}
+          exact
+          render={() => (
             <BeerCollection
               collection={beers}
               pageCtrl={changePage}
@@ -65,14 +75,14 @@ function App() {
               search={searchQuery}
               filter={filter}
             />
-          </div>
-        )}
-      ></Route>
-      <Route
-        path={`/:id`}
-        render={(props) => <BeerDetails {...props} />}
-        exact
-      ></Route>
+          )}
+        />
+        <Route
+          path={`/:id`}
+          render={(props) => <BeerDetails {...props} />}
+          exact
+        />
+      </div>
     </Router>
   );
 }
