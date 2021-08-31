@@ -86,3 +86,20 @@
 .next::after {
   content: ">";
 }
+
+.card .content a {
+  color: black;
+  text-decoration: none;
+}
+
+.image {
+  width: 80px;
+}
+
+.pageLink {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+}

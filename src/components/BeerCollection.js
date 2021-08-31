@@ -1,6 +1,8 @@
 import React from "react";
+import Search from "./Search";
+import { Link } from "react-router-dom";
 
-export default function BeerCollection({ collection, pageCtrl, page }) {
+export default function BeerCollection({ collection, pageCtrl, page, search }) {
   const nextPg = () => {
     pageCtrl(1);
   };
@@ -13,13 +15,13 @@ export default function BeerCollection({ collection, pageCtrl, page }) {
     <>
       <div className="beer_collection">
         <div className="page_content">
-          <div className="search_bar"></div>
+         <Search search={search} />
           <div className="cards">
             {collection.map((beer) => {
               return (
                 <div className="card">
                   <div className="content">
-                    <p>{beer.name}</p>
+                     <Link to={`/${beer.id}`}>{beer.name}</Link>
                   </div>
                 </div>
               );
