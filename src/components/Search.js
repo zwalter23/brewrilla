@@ -3,7 +3,7 @@ import React from "react";
 export default function Search({ search }) {
   return (
     <div id="search_bar">
-      <input id="query" type="text" defaultValue="Search beer by..."></input>
+      <input id="query" type="text" placeholder="Search beer by..."></input>
       <select name="filters" id="filters">
         <option value="beer_name">Beer name</option>
         <option value="yeast">Yeast strain</option>
