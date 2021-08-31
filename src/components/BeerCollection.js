@@ -2,13 +2,19 @@ import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
-export default function BeerCollection({ collection, pageCtrl, page, search }) {
+export default function BeerCollection({
+  collection,
+  pageCtrl,
+  page,
+  search,
+  filter,
+}) {
   const nextPg = () => {
-    pageCtrl(1);
+    pageCtrl(1, filter);
   };
 
   const previousPg = () => {
-    pageCtrl(-1);
+    pageCtrl(-1, filter);
   };
 
   return (
