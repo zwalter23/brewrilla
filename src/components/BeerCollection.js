@@ -13,6 +13,9 @@ export default function BeerCollection({ collection, pageCtrl, page, search }) {
 
   return (
     <div>
+      <div className="pageLink">
+        <Link className="hideDecor" to="/random" >Random beer</Link>
+      </div>
       <Search search={search} />
       {collection.map((beer) => {
         return <div className="cards">
