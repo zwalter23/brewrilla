@@ -37,13 +37,11 @@ function App() {
         <p>Menu4</p>
         <p>Menu5</p>
       </div>
-      <div className="pagecontent">
-        <BeerCollection
-          collection={beers}
-          pageCtrl={changePage}
-          page={currentPage}
-        />
-      </div>
+      <BeerCollection
+        collection={beers}
+        pageCtrl={changePage}
+        page={currentPage}
+      />
     </div>
   );
 }
