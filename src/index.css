@@ -30,7 +30,7 @@ body {
   content: ">";
 }
 
-.beerName {
+.hideDecor {
   color: black;
   text-decoration: none;
 }
@@ -40,7 +40,9 @@ body {
 }
 
 .pageLink {
+  text-decoration: none;
   position: absolute;
   top: 0;
   right: 0;
+  margin: 5px;
 }

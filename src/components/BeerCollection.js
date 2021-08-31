@@ -15,7 +15,7 @@ export default function BeerCollection({ collection, pageCtrl, page }) {
       {collection.map((beer) => {
         return <div className="cards">
           <div className="card">
-            <Link className="beerName" to={`/${beer.id}`}>{beer.name}</Link>
+            <Link className="hideDecor" to={`/${beer.id}`}>{beer.name}</Link>
           </div>
         </div>
       })}

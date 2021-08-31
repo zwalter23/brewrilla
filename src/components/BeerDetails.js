@@ -26,14 +26,14 @@ export const BeerDetails = (props) => {
     return (
         <div className="div">
             <div className="pageLink">
-                <Link to="/">Home</Link>
-                <link to="/"></link>
+                <Link className="hideDecor" to="/">Home</Link><br></br>
+                <Link className="hideDecor" to="/id/recipe">I want to see the recipe</Link>
             </div>
             {details.name &&
                 <>
                     <img className="image" src={details.image_url} alt="" ></img>
                     <p>Name: {details.name}</p>
-                    <p>Tagline: {details.tagline}</p>
+                    <p>Beer Style: {details.tagline}</p>
                     <p>ABV: {details.abv}%</p>
                     <p>IBU: {details.ibu}</p>
                     <div>
