@@ -18,7 +18,9 @@ export default function BeerCollection({ collection, pageCtrl, page }) {
             {collection.map((beer) => {
               return (
                 <div className="card">
-                  <p>{beer.name}</p>
+                  <div className="content">
+                    <p>{beer.name}</p>
+                  </div>
                 </div>
               );
             })}
