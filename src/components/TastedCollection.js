@@ -1,19 +1,15 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
-export const TastedCollection = (tastedCollection) => {
-  useEffect(() => {
-    localStorage.setItem("tastedBeers", JSON.stringify(tastedCollection));
-  }, []);
-
-  console.log(tastedCollection.tastedCollection);
+export const TastedCollection = ({ tastedCollection, handleClick }) => {
   return (
     <div>
       <h1>Tasted Beers</h1>
+      <button onClick={handleClick}>Change</button>
       <ul>
-        {tastedCollection.tastedCollection.map((tastedBeer) => {
-          return <li>{tastedBeer}</li>;
-        })}
+        {tastedCollection.length !== 0 &&
+          tastedCollection.map((tastedBeer) => {
+            return <li>{tastedBeer}</li>;
+          })}
       </ul>
     </div>
   );

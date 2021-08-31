@@ -6,15 +6,22 @@ import { TastedCollection } from "./components/TastedCollection";
 function App() {
   const [beers, setBeerCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
-  const [tastedBeers, setTasted] = useState([
-    "forexample",
-    "example2",
-    "example3",
-  ]);
+  const [tastedBeers, setTasted] = useState([]);
 
   useEffect(() => {
+    const getTastedBeerList = () => {
+      const localData = localStorage.getItem("tastedBeers");
+      setTasted(JSON.parse(localData));
+    };
+
     getBeersByPage(1);
+    getTastedBeerList();
   }, []);
+
+  const changeTasted = () => {
+    localStorage.setItem("tastedBeers", JSON.stringify(["3", "egy"]));
+    setTasted(["3", "egy"]);
+  };
 
   const getBeersByPage = (page) => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6`;
@@ -41,7 +48,10 @@ function App() {
         pageCtrl={changePage}
         page={currentPage}
       />
-      <TastedCollection tastedCollection={tastedBeers} />
+      <TastedCollection
+        tastedCollection={tastedBeers}
+        handleClick={changeTasted}
+      />
     </div>
   );
 }
