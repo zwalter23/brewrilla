@@ -13,8 +13,10 @@ function App() {
   }, []);
 
   const getBeersByPage = (page) => {
-    const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6`
-    fetchData(url).then((results) => { setBeerCollection(results.data) })
+    const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6`;
+    fetchData(url).then((results) => {
+      setBeerCollection(results.data);
+    });
     setCurrentPage(page);
   };
 
@@ -51,16 +53,23 @@ function App() {
 
   return (
     <Router>
-      <Route path="/" exact render={() => <div className="App">
-        <BeerCollection collection={beers} pageCtrl={changePage} page={currentPage} search={searchQuery} />
-      </div>}>
+    <div className="layout">
+      <div className="navbar">
+        <p>Menu1</p>
+        <p>Menu2</p>
+        <p>Menu3</p>
+        <p>Menu4</p>
+        <p>Menu5</p>
+      </div>
+     <Route path="/" exact render={() => {
+      <BeerCollection collection={beers} pageCtrl={changePage} page={currentPage} search={searchQuery} />
       </Route>
-      <Route
+     <Route
         path={`/:id`}
         render={(props) => <BeerDetails {...props} />}
-        exact
-      ></Route>
-    </Router>
+        exact />
+          </div>
+</Router>
   );
 }
 

@@ -5,27 +5,36 @@ import { Link } from "react-router-dom";
 export default function BeerCollection({ collection, pageCtrl, page, search }) {
   const nextPg = () => {
     pageCtrl(1);
-  }
+  };
 
   const previousPg = () => {
-    pageCtrl(-1)
-  }
+    pageCtrl(-1);
+  };
 
   return (
-    <div>
-      <Search search={search} />
-      {collection.map((beer) => {
-        return <div className="cards">
-          <div className="card">
-            <Link className="hideDecor" to={`/${beer.id}`}>{beer.name}</Link>
+    <>
+      <div className="beer_collection">
+        <div className="page_content">
+         <Search search={search} />
+          <div className="cards">
+            {collection.map((beer) => {
+              return (
+                <div className="card">
+                  <div className="content">
+                     <Link to={`/${beer.id}`}>{beer.name}</Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      })}
-      <div className="pagination">
-        {page !== 1 && <div className="previous" onClick={previousPg} />}
-        <p>Page {page}</p>
-        <div className="next" onClick={nextPg} />
+
+        <div className="pagination">
+          {page !== 1 && <div className="previous" onClick={previousPg} />}
+          <p>Page {page}</p>
+          <div className="next" onClick={nextPg} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
