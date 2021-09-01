@@ -3,19 +3,35 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BeerCollection from "./components/BeerCollection";
 import { BeerDetails } from "./components/BeerDetails";
 import fetchData from "./components/fetchData";
+import { TastedCollection } from "./components/TastedCollection";
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
+  const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
+
 
   useEffect(() => {
     getBeersByPage(1);
+    getTastedBeerList();
   }, []);
+
+
+  const getTastedBeerList = () => {
+    const localData = localStorage.getItem("tastedBeers");
+    setTasted(JSON.parse(localData));
+  };
+
+  const changeTasted = () => {
+    tastedBeers.push("Event.CurrentTarget.id");
+    localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
+    getTastedBeerList();
+  };
+
 
   const getBeersByPage = (page, filter = "") => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6&${filter}`;
-    console.log(url);
     fetchData(url).then((results) => {
       setBeerCollection(results.data);
     });
@@ -55,6 +71,7 @@ function App() {
   };
 
   return (
+
     <Router>
       <div className="layout">
         <div className="navbar">
@@ -82,6 +99,13 @@ function App() {
           render={(props) => <BeerDetails {...props} />}
           exact
         />
+        <Route path={`/tastedlist`} exact render={() =>  (
+          <TastedCollection
+            tastedCollection={tastedBeers}
+            handleClick={changeTasted}
+      />
+              
+              )}  />   
       </div>
     </Router>
   );
