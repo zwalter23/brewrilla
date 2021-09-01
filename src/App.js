@@ -11,12 +11,10 @@ function App() {
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
 
-
   useEffect(() => {
     getBeersByPage(1);
     getTastedBeerList();
   }, []);
-
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
@@ -28,7 +26,6 @@ function App() {
     localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
     getTastedBeerList();
   };
-
 
   const getBeersByPage = (page, filter = "") => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6&${filter}`;
@@ -51,32 +48,25 @@ function App() {
   const searchQuery = () => {
     let filterToPass = "";
     const filterValue = document.getElementById("filters").value;
-    const queryValue =  document.getElementById("query").value;
-    
+    const queryValue = document.getElementById("query").value;
+
     if (filterValue === "brewed_before") {
-      filterToPass = `${filterValue}=12-${
-        queryValue - 1
-      }`;
+      filterToPass = `${filterValue}=12-${queryValue - 1}`;
     } else if (filterValue === "brewed_after") {
-      filterToPass = `${filterValue}=01-${
-        queryValue
-      }`;
+      filterToPass = `${filterValue}=01-${queryValue}`;
     } else {
-      filterToPass = `${filterValue}=${
-        queryValue
-      }`;
+      filterToPass = `${filterValue}=${queryValue}`;
     }
     setFilter(filterToPass);
     getBeersByPage(1, filterToPass);
   };
 
   return (
-
     <Router>
       <div className="layout">
         <div className="navbar">
           <Link to="/random">Random beer</Link>
-          <p>Menu2</p>
+          <Link to="/tastedlist">Tasted beers</Link>
           <p>Menu3</p>
           <p>Menu4</p>
           <p>Menu5</p>
@@ -95,17 +85,20 @@ function App() {
           )}
         />
         <Route
-          path={`/:id`}
+          path={`/beer/:id`}
           render={(props) => <BeerDetails {...props} />}
           exact
         />
-        <Route path={`/tastedlist`} exact render={() =>  (
-          <TastedCollection
-            tastedCollection={tastedBeers}
-            handleClick={changeTasted}
-      />
-              
-              )}  />   
+        <Route
+          path={`/tastedlist`}
+          exact
+          render={() => (
+            <TastedCollection
+              tastedCollection={tastedBeers}
+              handleClick={changeTasted}
+            />
+          )}
+        />
       </div>
     </Router>
   );
