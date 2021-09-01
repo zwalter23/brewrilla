@@ -35,20 +35,18 @@ function App() {
   const searchQuery = () => {
     let filterToPass = "";
     const filterValue = document.getElementById("filters").value;
-    const queryValue =  document.getElementById("query").value;
-    
-    if (filterValue === "brewed_before") {
-      filterToPass = `${filterValue}=12-${
-        queryValue - 1
-      }`;
-    } else if (filterValue === "brewed_after") {
-      filterToPass = `${filterValue}=01-${
-        queryValue
-      }`;
+    const queryValue = document.getElementById("query").value;
+
+    if (queryValue === "") {
+      filterToPass = "";
     } else {
-      filterToPass = `${filterValue}=${
-        queryValue
-      }`;
+      if (filterValue === "brewed_before") {
+        filterToPass = `${filterValue}=12-${queryValue - 1}`;
+      } else if (filterValue === "brewed_after") {
+        filterToPass = `${filterValue}=01-${queryValue}`;
+      } else {
+        filterToPass = `${filterValue}=${queryValue}`;
+      }
     }
     setFilter(filterToPass);
     getBeersByPage(1, filterToPass);
