@@ -17,7 +17,7 @@ export const BeerDetails = (props) => {
                 setDetails(result.data[0]);
             } catch (TypeError) {
                 console.error(TypeError);
-                console.log("Check if there is a Pokémon with the given ID");
+                console.log("Check if there is a beer with the given ID");
             }
         });
     }, [props.match.params.id]);
@@ -27,7 +27,7 @@ export const BeerDetails = (props) => {
         <div className="div">
             <div className="pageLink">
                 <Link className="hideDecor" to="/">Home</Link><br></br>
-                <Link className="hideDecor" to="/id/recipe">I want to see the recipe</Link>
+                <Link className="hideDecor" to={`/recipe/${details.id}`}>I want to see the recipe</Link>
             </div>
             {details.name &&
                 <>

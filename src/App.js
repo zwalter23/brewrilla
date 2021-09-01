@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BeerCollection from "./components/BeerCollection";
 import { BeerDetails } from "./components/BeerDetails";
+import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 
 function App() {
@@ -36,9 +37,8 @@ function App() {
     let url = "";
 
     if (filter.value === "brewed_before") {
-      url = `https://api.punkapi.com/v2/beers?${filter.value}=12-${
-        query.value - 1
-      }`;
+      url = `https://api.punkapi.com/v2/beers?${filter.value}=12-${query.value - 1
+        }`;
     } else if (filter.value === "brewed_after") {
       url = `https://api.punkapi.com/v2/beers?${filter.value}=01-${query.value}`;
     } else {
@@ -77,6 +77,11 @@ function App() {
         <Route
           path={`/:id`}
           render={(props) => <BeerDetails {...props} />}
+          exact
+        />
+        <Route
+          path={`/recipe/:id`}
+          render={(props) => <BeerRecipe {...props} />}
           exact
         />
       </div>

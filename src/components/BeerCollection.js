@@ -15,13 +15,13 @@ export default function BeerCollection({ collection, pageCtrl, page, search }) {
     <>
       <div className="beer_collection">
         <div className="page_content">
-         <Search search={search} />
+          <Search search={search} />
           <div className="cards">
             {collection.map((beer) => {
               return (
                 <div className="card">
                   <div className="content">
-                     <Link to={`/${beer.id}`}>{beer.name}</Link>
+                    <Link to={`/${beer.id}`}>{beer.name}</Link>
                   </div>
                 </div>
               );
