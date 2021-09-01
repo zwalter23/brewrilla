@@ -6,6 +6,11 @@ import fetchData from "./fetchData";
 const BeerRecipe = (props) => {
   const [details, setDetails] = useState([]);
 
+  function Twist(twistData) {
+    const splittedData = twistData.split(", ");
+    return splittedData;
+  }
+
   useEffect(() => {
     const id = props.match.params.id;
     const url = `https://api.punkapi.com/v2/beers/${id}`;
@@ -96,6 +101,21 @@ const BeerRecipe = (props) => {
                     );
                   })}
                 </ul>
+                {details.method.twist != null ? (
+                  <ul id="additionList">
+                    {Twist(details.method.twist).map((addition) => {
+                      return (
+                        <li>
+                          <p className="addition"></p>
+                          <span>{addition}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  console.log("No twists on this!")
+                )}
+
                 <ul id="yeastList">
                   <li>
                     <p className="yeast"></p>

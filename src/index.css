@@ -162,9 +162,14 @@ li {
   background-image: url("./images/beaker.svg");
 }
 
+.addition {
+  background-image: url("./images/spice.svg");
+}
+
 .malt,
 .hop,
-.yeast {
+.yeast,
+.addition {
   height: 15px;
   width: 15px;
   background-repeat: no-repeat;
@@ -233,7 +238,8 @@ li {
 
 #hopList,
 #yeastList,
-#maltList {
+#maltList,
+#additionList {
   margin: 5px 0 0 0;
   border-top: 1px solid black;
 }
