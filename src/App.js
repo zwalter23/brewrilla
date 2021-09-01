@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     getBeersByPage(1);
     getTastedBeerList();
+    getBrewedBeerList();
   }, []);
 
   const getTastedBeerList = () => {
@@ -26,6 +27,21 @@ function App() {
     } else {
       setTasted([]);
     }
+  };
+
+  const getBrewedBeerList = () => {
+    const localData = localStorage.getItem("brewedBeers");
+    if (localData) {
+      setTasted(JSON.parse(localData));
+    } else {
+      setBrewed([]);
+    }
+  };
+
+  const addBrewed = (brewedBeer) => {
+    brewedBeers.push(brewedBeer);
+    localStorage.setItem("brewedBeers", JSON.stringify(brewedBeers));
+    getBrewedBeerList();
   };
 
   const addTasted = (tastedBeer) => {
@@ -94,6 +110,7 @@ function App() {
               search={searchQuery}
               filter={filter}
               addTasted={addTasted}
+              addBrewed={addBrewed}
             />
           )}
         />

@@ -9,6 +9,7 @@ export default function BeerCollection({
   search,
   filter,
   addTasted,
+  addBrewed,
 }) {
   const nextPg = () => {
     pageCtrl(1, filter);
@@ -37,7 +38,12 @@ export default function BeerCollection({
                         <h4>{beer.tagline}</h4>
                       </div>
                     </Link>
-                    <div className="add_btns">
+                    <div
+                      onClick={() => {
+                        addBrewed(beer.name);
+                      }}
+                      className="add_btns"
+                    >
                       <div className="brewed_btn"></div>
                       <div
                         onClick={() => {
