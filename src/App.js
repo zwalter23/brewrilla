@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BeerCollection from "./components/BeerCollection";
 import { BeerDetails } from "./components/BeerDetails";
+import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
     let filterToPass = "";
     const filterValue = document.getElementById("filters").value;
     const queryValue = document.getElementById("query").value;
+
 
     if (queryValue === "") {
       filterToPass = "";
@@ -78,6 +80,11 @@ function App() {
         <Route
           path={`/:id`}
           render={(props) => <BeerDetails {...props} />}
+          exact
+        />
+        <Route
+          path={`/recipe/:id`}
+          render={(props) => <BeerRecipe {...props} />}
           exact
         />
       </div>

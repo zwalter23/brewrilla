@@ -27,25 +27,25 @@ export const BeerDetails = (props) => {
           Home
         </Link>
         <br></br>
-        <Link className="hideDecor" to="/id/recipe">
-          I want to see the recipe
+        <Link className="hideDecor" to={`/recipe/${details.id}`}>
+          I want to brew this
         </Link>
       </div>
       {details.name && (
         <>
           <img className="image" src={details.image_url} alt=""></img>
-          <p>Name: {details.name}</p>
-          <p>Beer Style: {details.tagline}</p>
-          <p>ABV: {details.abv}%</p>
-          <p>IBU: {details.ibu}</p>
+          <h1>{details.name}</h1>
+          <h2>{details.tagline}</h2>
+          <h4>ABV: {details.abv}%</h4>
+          <h4>IBU: {details.ibu}</h4>
+          <h5>First brewed: {details.first_brewed}</h5>
+          <br></br>
           <div>
-            <p>Perfectly pairing food: </p>
+            <p>Have a glass of {details.name} with: </p>
             {details.food_pairing.map((food) => (
               <p key={details.id}> {food} </p>
             ))}
           </div>
-          <p>First brewed: {details.first_brewed}</p>
-          <p>Contributor: {details.contributed_by} </p>
         </>
       )}
     </div>
