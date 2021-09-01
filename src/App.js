@@ -9,18 +9,19 @@ function App() {
   const [tastedBeers, setTasted] = useState([]);
 
   useEffect(() => {
-    const getTastedBeerList = () => {
-      const localData = localStorage.getItem("tastedBeers");
-      setTasted(JSON.parse(localData));
-    };
-
     getBeersByPage(1);
     getTastedBeerList();
   }, []);
 
+  const getTastedBeerList = () => {
+    const localData = localStorage.getItem("tastedBeers");
+    setTasted(JSON.parse(localData));
+  };
+
   const changeTasted = () => {
-    localStorage.setItem("tastedBeers", JSON.stringify(["3", "egy"]));
-    setTasted(["3", "egy"]);
+    tastedBeers.push("Event.CurrentTarget.id");
+    localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
+    getTastedBeerList();
   };
 
   const getBeersByPage = (page) => {
