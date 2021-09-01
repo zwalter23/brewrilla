@@ -80,7 +80,7 @@ a {
   justify-content: flex-end;
 }
 
-.card_content .add_btns div {
+.add_btns div {
   height: 30px;
   width: 30px;
   background-color: #07362b;
@@ -88,7 +88,7 @@ a {
   position: relative;
 }
 
-.card_content .add_btns div::after {
+.add_btns div::after {
   content: "+";
   position: absolute;
   left: 50%;
