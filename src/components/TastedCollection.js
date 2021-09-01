@@ -5,7 +5,8 @@ export const TastedCollection = ({ tastedCollection }) => {
     <div>
       <h1>Tasted Beers</h1>
       <ul>
-        {tastedCollection.length !== 0 &&
+        {tastedCollection &&
+          tastedCollection.length !== 0 &&
           tastedCollection.map((tastedBeer) => {
             return <li>{tastedBeer}</li>;
           })}

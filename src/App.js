@@ -22,7 +22,6 @@ function App() {
   };
 
   const addTasted = (tastedBeer) => {
-    console.log(tastedBeer);
     tastedBeers.push(tastedBeer);
     localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
     getTastedBeerList();
