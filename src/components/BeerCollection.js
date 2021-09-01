@@ -2,13 +2,19 @@ import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
-export default function BeerCollection({ collection, pageCtrl, page, search }) {
+export default function BeerCollection({
+  collection,
+  pageCtrl,
+  page,
+  search,
+  filter,
+}) {
   const nextPg = () => {
-    pageCtrl(1);
+    pageCtrl(1, filter);
   };
 
   const previousPg = () => {
-    pageCtrl(-1);
+    pageCtrl(-1, filter);
   };
 
   return (
@@ -20,8 +26,20 @@ export default function BeerCollection({ collection, pageCtrl, page, search }) {
             {collection.map((beer) => {
               return (
                 <div className="card">
-                  <div className="content">
-                    <Link to={`/${beer.id}`}>{beer.name}</Link>
+                  <div className="img_container">
+                    <img src={beer.image_url} alt={beer.name}></img>
+                  </div>
+                  <div className="card_content">
+                    <Link to={`/${beer.id}`}>
+                      <div className="card_info">
+                        <h2>{beer.name}</h2>
+                        <h4>{beer.tagline}</h4>
+                      </div>
+                    </Link>
+                    <div className="add_btns">
+                      <div className="brewed_btn"></div>
+                      <div className="tasted_btn"></div>
+                    </div>
                   </div>
                 </div>
               );

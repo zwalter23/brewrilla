@@ -8,48 +8,50 @@ import fetchData from "./components/fetchData";
 function App() {
   const [beers, setBeerCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
+  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     getBeersByPage(1);
   }, []);
 
-  const getBeersByPage = (page) => {
-    const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6`;
+  const getBeersByPage = (page, filter = "") => {
+    const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=6&${filter}`;
+    console.log(url);
     fetchData(url).then((results) => {
       setBeerCollection(results.data);
     });
     setCurrentPage(page);
   };
 
-  const changePage = (step) => {
+  const changePage = (step, filter) => {
     if (parseInt(step) < 0) {
       if (currentPage !== 1) {
-        getBeersByPage(currentPage + step);
+        getBeersByPage(currentPage + step, filter);
       }
     } else {
-      getBeersByPage(currentPage + step);
+      getBeersByPage(currentPage + step, filter);
     }
   };
 
   const searchQuery = () => {
-    const query = document.getElementById("query");
-    const filter = document.getElementById("filters");
-    let url = "";
+    let filterToPass = "";
+    const filterValue = document.getElementById("filters").value;
+    const queryValue = document.getElementById("query").value;
 
-    if (filter.value === "brewed_before") {
-      url = `https://api.punkapi.com/v2/beers?${filter.value}=12-${query.value - 1
-        }`;
-    } else if (filter.value === "brewed_after") {
-      url = `https://api.punkapi.com/v2/beers?${filter.value}=01-${query.value}`;
+
+    if (queryValue === "") {
+      filterToPass = "";
     } else {
-      url = `https://api.punkapi.com/v2/beers?${filter.value}=${query.value}`;
+      if (filterValue === "brewed_before") {
+        filterToPass = `${filterValue}=12-${queryValue - 1}`;
+      } else if (filterValue === "brewed_after") {
+        filterToPass = `${filterValue}=01-${queryValue}`;
+      } else {
+        filterToPass = `${filterValue}=${queryValue}`;
+      }
     }
-
-    fetchData(url).then((results) => {
-      setBeerCollection(results.data);
-      console.log(results.data);
-      console.log(beers);
-    });
+    setFilter(filterToPass);
+    getBeersByPage(1, filterToPass);
   };
 
   return (
@@ -71,6 +73,7 @@ function App() {
               pageCtrl={changePage}
               page={currentPage}
               search={searchQuery}
+              filter={filter}
             />
           )}
         />
