@@ -8,6 +8,7 @@ export default function BeerCollection({
   page,
   search,
   filter,
+  addTasted,
 }) {
   const nextPg = () => {
     pageCtrl(1, filter);
@@ -38,7 +39,12 @@ export default function BeerCollection({
                     </Link>
                     <div className="add_btns">
                       <div className="brewed_btn"></div>
-                      <div className="tasted_btn"></div>
+                      <div
+                        onClick={() => {
+                          addTasted(beer.name);
+                        }}
+                        className="tasted_btn"
+                      ></div>
                     </div>
                   </div>
                 </div>

@@ -21,8 +21,9 @@ function App() {
     setTasted(JSON.parse(localData));
   };
 
-  const changeTasted = () => {
-    tastedBeers.push("Event.CurrentTarget.id");
+  const addTasted = (tastedBeer) => {
+    console.log(tastedBeer);
+    tastedBeers.push(tastedBeer);
     localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
     getTastedBeerList();
   };
@@ -65,7 +66,7 @@ function App() {
     <Router>
       <div className="layout">
         <div className="navbar">
-          <Link to="/random">Random beer</Link>
+          <Link to="/beer/random">Random beer</Link>
           <Link to="/tastedlist">Tasted beers</Link>
           <p>Menu3</p>
           <p>Menu4</p>
@@ -81,6 +82,7 @@ function App() {
               page={currentPage}
               search={searchQuery}
               filter={filter}
+              addTasted={addTasted}
             />
           )}
         />
@@ -92,12 +94,7 @@ function App() {
         <Route
           path={`/tastedlist`}
           exact
-          render={() => (
-            <TastedCollection
-              tastedCollection={tastedBeers}
-              handleClick={changeTasted}
-            />
-          )}
+          render={() => <TastedCollection tastedCollection={tastedBeers} />}
         />
       </div>
     </Router>
