@@ -25,17 +25,23 @@ export default function BeerCollection({
           <div className="cards">
             {collection.map((beer) => {
               return (
-                <Link to={`/${beer.id}`}>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={beer.image_url} alt={beer.name}></img>
-                    </div>
-                    <div className="card_content">
-                      <h2>{beer.name}</h2>
-                      <h4>{beer.tagline}</h4>
+                <div className="card">
+                  <div className="img_container">
+                    <img src={beer.image_url} alt={beer.name}></img>
+                  </div>
+                  <div className="card_content">
+                    <Link to={`/${beer.id}`}>
+                      <div className="card_info">
+                        <h2>{beer.name}</h2>
+                        <h4>{beer.tagline}</h4>
+                      </div>
+                    </Link>
+                    <div className="add_btns">
+                      <div className="brewed_btn"></div>
+                      <div className="tasted_btn"></div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
