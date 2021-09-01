@@ -21,75 +21,92 @@ const BeerRecipe = (props) => {
   }, [props.match.params.id]);
 
   return (
-    <div>
+    <div id="recipePageBody">
       {details.name && (
-        <div>
-          <img src={details.image_url} height="200px"></img>
-          <h1> {details.name} </h1>
-          <h2> {details.tagline} </h2>
+        <div id="recipeContainer">
           <br></br>
-          <h4> {details.description} </h4>
-          <br></br>
-          <div>
-            <span>ABV: {details.abv}% </span>
-            <span>IBU: {details.ibu} </span>
-            <span>EBC: {details.ebc} </span>
-            <span>SRM: {details.srm} </span>
-          </div>
-          <div>
-            <span>pH: {details.ph} </span>
-            <span>Attenuation level: {details.attenuation_level} </span>
-          </div>
-          <div>
-            <span>Target OG: {details.target_og} </span>
-            <span>Target FG: {details.target_fg} </span>
-          </div>
-          <br></br>
-          <div>
-            <span>
-              Volume: {details.volume.value} {details.volume.unit}{" "}
-            </span>
-            <span>
-              Boil Volume: {details.boil_volume.value}{" "}
-              {details.boil_volume.unit}
-            </span>
-          </div>
-          <br></br>
-          <div>
-            <h3>Ingredients:</h3>
-            <br></br>
-            <div>
-              <ul>
-                {details.ingredients.malt.map((malt) => {
-                  return (
-                    <li>
-                      {malt.name}
-                      {" - "}
-                      {malt.amount.value} {malt.amount.unit}
-                    </li>
-                  );
-                })}
-              </ul>
-              <br></br>
-              <ul>
-                {details.ingredients.hops.map((hop) => {
-                  return (
-                    <li>
-                      {hop.name}
-                      {" - "}
-                      {hop.amount.value} {hop.amount.unit} at the {hop.add} of
-                      the boil
-                    </li>
-                  );
-                })}
-              </ul>
-              <br></br>
-              <p>{details.ingredients.yeast}</p>
+          <div id="recipeHeadContainer">
+            <div id="recipeHead">
+              <img src={details.image_url}></img>
+              <div id="recipeInformationHolder">
+                <div id="recipeTitle">
+                  <h1> {details.name} </h1>
+                  <h2> {details.tagline} </h2>
+                </div>
+                <h4 id="beerDescription"> {details.description} </h4>
+                <div id="recipeParameters">
+                  <br></br>
+                  <div>
+                    <span> ABV: {details.abv}% </span>
+                    <span> IBU: {details.ibu} </span>
+                    <span> EBC: {details.ebc} </span>
+                    <span> SRM: {details.srm} </span>
+                  </div>
+                  <div>
+                    <span> pH: {details.ph}; </span>
+                    <span>
+                      {" "}
+                      Attenuation level: {details.attenuation_level}{" "}
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      {" "}
+                      Target OG: {details.target_og} Target FG:{" "}
+                      {details.target_fg}{" "}
+                    </span>
+                  </div>
+                  <div>
+                    <p>
+                      Volume: {details.volume.value} {details.volume.unit}{" "}
+                    </p>
+                    <p>
+                      Boil Volume: {details.boil_volume.value}{" "}
+                      {details.boil_volume.unit}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="recipeIngredientsHolder">
+              <h3>Ingredients:</h3>
+              <div>
+                <ul id="maltList">
+                  {details.ingredients.malt.map((malt) => {
+                    return (
+                      <li>
+                        <p className="malt"></p>
+                        {malt.name}
+                        {" - "}
+                        {malt.amount.value} {malt.amount.unit}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <ul id="hopList">
+                  {details.ingredients.hops.map((hop) => {
+                    return (
+                      <li>
+                        <p className="hop"></p>
+                        {hop.name}
+                        {" - "}
+                        {hop.amount.value} {hop.amount.unit} at the {hop.add} of
+                        the boil
+                      </li>
+                    );
+                  })}
+                </ul>
+                <ul id="yeastList">
+                  <li>
+                    <p className="yeast"></p>
+                    {details.ingredients.yeast}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-          <br></br>
-          <div>
-            <h3>Method:</h3>
+          <div id="recipeMethod">
+            <h3>Instructions:</h3>
             <br></br>
             <span>
               Mash at {details.method.mash_temp[0].temp.value}{" "}
@@ -109,7 +126,7 @@ const BeerRecipe = (props) => {
             <br></br>
             <p>{details.brewers_tips}</p>
             <br></br>
-            <h5>{details.contributed_by}</h5>
+            <h5 id="recipeContributor">{details.contributed_by}</h5>
           </div>
           <br></br>
           <div>
