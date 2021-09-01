@@ -18,10 +18,16 @@ function App() {
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
-    setTasted(JSON.parse(localData));
+    console.log(localData);
+    if (localData) {
+      setTasted(JSON.parse(localData));
+    } else {
+      setTasted([]);
+    }
   };
 
   const addTasted = (tastedBeer) => {
+    console.log(tastedBeers);
     tastedBeers.push(tastedBeer);
     localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
     getTastedBeerList();
@@ -70,6 +76,7 @@ function App() {
           <p>Menu3</p>
           <p>Menu4</p>
           <p>Menu5</p>
+          <Link to="/">Home</Link>
         </div>
         <Route
           path={"/"}
