@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import fetchData from "./fetchData";
 
-export const BeerDetails = (props) => {
+export const BeerDetails = ({ addTasted }) => {
   const [details, setDetails] = useState([]);
-
+  const { id } = useParams();
+  console.log(addTasted);
   useEffect(() => {
-    const id = props.match.params.id;
     const url = `https://api.punkapi.com/v2/beers/${id}`;
 
     fetchData(url).then((result) => {
@@ -18,7 +18,7 @@ export const BeerDetails = (props) => {
         console.log("Check if there is a beer with the given ID");
       }
     });
-  }, [props.match.params.id]);
+  }, [id]);
 
   return (
     <div className="div">
@@ -33,6 +33,15 @@ export const BeerDetails = (props) => {
       </div>
       {details.name && (
         <>
+          <div className="add_btns">
+            <div className="brewed_btn"></div>
+            <div
+              onClick={() => {
+                addTasted(details.name);
+              }}
+              className="tasted_btn"
+            ></div>
+          </div>
           <img className="image" src={details.image_url} alt=""></img>
           <h1>{details.name}</h1>
           <h2>{details.tagline}</h2>

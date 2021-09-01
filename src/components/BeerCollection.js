@@ -8,6 +8,7 @@ export default function BeerCollection({
   page,
   search,
   filter,
+  addTasted,
 }) {
   const nextPg = () => {
     pageCtrl(1, filter);
@@ -30,7 +31,7 @@ export default function BeerCollection({
                     <img src={beer.image_url} alt={beer.name}></img>
                   </div>
                   <div className="card_content">
-                    <Link to={`/${beer.id}`}>
+                    <Link to={`/beer/${beer.id}`}>
                       <div className="card_info">
                         <h2>{beer.name}</h2>
                         <h4>{beer.tagline}</h4>
@@ -38,7 +39,12 @@ export default function BeerCollection({
                     </Link>
                     <div className="add_btns">
                       <div className="brewed_btn"></div>
-                      <div className="tasted_btn"></div>
+                      <div
+                        onClick={() => {
+                          addTasted(beer.name);
+                        }}
+                        className="tasted_btn"
+                      ></div>
                     </div>
                   </div>
                 </div>
