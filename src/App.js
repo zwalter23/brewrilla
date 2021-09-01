@@ -5,12 +5,14 @@ import { BeerDetails } from "./components/BeerDetails";
 import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
+import { BrewedCollection } from "./components/BrewedCollection";
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [brewedBeers, setBrewed] = useState([]);
 
   useEffect(() => {
     getBeersByPage(1);
@@ -76,7 +78,7 @@ function App() {
         <div className="navbar">
           <Link to="/beer/random">Random beer</Link>
           <Link to="/tastedlist">Tasted beers</Link>
-          <p>Menu3</p>
+          <Link to="/brewedlist">Brewed beers</Link>
           <p>Menu4</p>
           <p>Menu5</p>
           <Link to="/">Home</Link>
@@ -102,6 +104,11 @@ function App() {
           path={`/tastedlist`}
           exact
           render={() => <TastedCollection tastedCollection={tastedBeers} />}
+        />
+        <Route
+          path={`/brewedlist`}
+          exact
+          render={() => <BrewedCollection brewedCollection={brewedBeers} />}
         />
         <Route
           path={`/recipe/:id`}
