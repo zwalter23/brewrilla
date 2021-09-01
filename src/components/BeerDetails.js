@@ -27,7 +27,7 @@ export const BeerDetails = (props) => {
         <div className="div">
             <div className="pageLink">
                 <Link className="hideDecor" to="/">Home</Link><br></br>
-                <Link className="hideDecor" to={`/recipe/${details.id}`}>I want to see the recipe</Link>
+                <Link className="hideDecor" to={`/recipe/${details.id}`}>I want to brew this</Link>
             </div>
             {details.name &&
                 <>
