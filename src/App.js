@@ -51,6 +51,13 @@ function App() {
     getBrewedBeerList();
   };
 
+  const removeTasted = (beer) => {
+    const index = tastedBeers.indexOf(beer);
+    tastedBeers.splice(index, 1);
+    localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
+    getBrewedBeerList();
+  };
+
   const addTasted = (tastedBeer) => {
     tastedBeers.push(tastedBeer);
     localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
@@ -119,6 +126,7 @@ function App() {
               addTasted={addTasted}
               addBrewed={addBrewed}
               removeBrewed={removeBrewed}
+              removeTasted={removeTasted}
               brewedList={brewedBeers}
               tastedList={tastedBeers}
             />

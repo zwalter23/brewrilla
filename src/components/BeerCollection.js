@@ -70,19 +70,33 @@ export default function BeerCollection({
                           id={`brewbtn${beer.id}`}
                         ></div>
                       )}
-
-                      <div
-                        onClick={(event) => {
-                          event.target.classList.toggle("tasted");
-                          if (event.target.classList.contains("tasted")) {
-                            addTasted(beer.name);
-                          } else {
-                            removeTasted(beer.name);
-                          }
-                        }}
-                        className="tasted_btn"
-                        id={`tastebtn${beer.id}`}
-                      ></div>
+                      {tastedList.includes(beer.name) ? (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("tasted");
+                            if (event.target.classList.contains("tasted")) {
+                              addTasted(beer.name);
+                            } else {
+                              removeTasted(beer.name);
+                            }
+                          }}
+                          className="tasted_btn tasted"
+                          id={`tastebtn${beer.id}`}
+                        ></div>
+                      ) : (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("tasted");
+                            if (event.target.classList.contains("tasted")) {
+                              addTasted(beer.name);
+                            } else {
+                              removeTasted(beer.name);
+                            }
+                          }}
+                          className="tasted_btn"
+                          id={`tastebtn${beer.id}`}
+                        ></div>
+                      )}
                     </div>
                   </div>
                 </div>
