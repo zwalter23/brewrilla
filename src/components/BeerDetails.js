@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import fetchData from "./fetchData";
 
-export const BeerDetails = ({ addTasted, addBrewed }) => {
+export const BeerDetails = ({
+  addTasted,
+  addBrewed,
+  removeBrewed,
+  removeTasted,
+  brewedList,
+  tastedList,
+}) => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   useEffect(() => {
@@ -33,18 +40,60 @@ export const BeerDetails = ({ addTasted, addBrewed }) => {
       {details.name && (
         <>
           <div className="add_btns">
-            <div
-              onClick={() => {
-                addBrewed(details.name);
-              }}
-              className="brewed_btn"
-            ></div>
-            <div
-              onClick={() => {
-                addTasted(details.name);
-              }}
-              className="tasted_btn"
-            ></div>
+            {brewedList.includes(details.name) ? (
+              <div
+                onClick={(event) => {
+                  event.target.classList.toggle("brewed");
+                  if (event.target.classList.contains("brewed")) {
+                    addBrewed(details.name);
+                  } else {
+                    removeBrewed(details.name);
+                  }
+                }}
+                className="brewed_btn brewed"
+                id={`brewbtn${details.id}`}
+              ></div>
+            ) : (
+              <div
+                onClick={(event) => {
+                  event.target.classList.toggle("brewed");
+                  if (event.target.classList.contains("brewed")) {
+                    addBrewed(details.name);
+                  } else {
+                    removeBrewed(details.name);
+                  }
+                }}
+                className="brewed_btn"
+                id={`brewbtn${details.id}`}
+              ></div>
+            )}
+            {tastedList.includes(details.name) ? (
+              <div
+                onClick={(event) => {
+                  event.target.classList.toggle("tasted");
+                  if (event.target.classList.contains("tasted")) {
+                    addTasted(details.name);
+                  } else {
+                    removeTasted(details.name);
+                  }
+                }}
+                className="tasted_btn tasted"
+                id={`tastebtn${details.id}`}
+              ></div>
+            ) : (
+              <div
+                onClick={(event) => {
+                  event.target.classList.toggle("tasted");
+                  if (event.target.classList.contains("tasted")) {
+                    addTasted(details.name);
+                  } else {
+                    removeTasted(details.name);
+                  }
+                }}
+                className="tasted_btn"
+                id={`tastebtn${details.id}`}
+              ></div>
+            )}
           </div>
           <img className="image" src={details.image_url} alt=""></img>
           <h1>{details.name}</h1>

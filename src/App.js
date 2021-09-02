@@ -133,7 +133,14 @@ function App() {
           )}
         />
         <Route path={`/beer/:id`} exact>
-          <BeerDetails addTasted={addTasted} addBrewed={addBrewed} />
+          <BeerDetails
+            addTasted={addTasted}
+            addBrewed={addBrewed}
+            removeBrewed={removeBrewed}
+            removeTasted={removeTasted}
+            brewedList={brewedBeers}
+            tastedList={tastedBeers}
+          />
         </Route>
         <Route
           path={`/tastedlist`}
