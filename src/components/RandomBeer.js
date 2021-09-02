@@ -26,6 +26,10 @@ export const RandomBeer = ({
         });
     }, []);
 
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     return (
         <div id="recipeContainer">
             <div className="pageLink">
@@ -104,6 +108,9 @@ export const RandomBeer = ({
                         ))}
                     </div>
 
+                    <div>
+                        <button className="refresh_btn" onClick={refreshPage}>Give me another beer</button>
+                    </div>
                 </>
             )}
         </div>
