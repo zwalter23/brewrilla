@@ -55,7 +55,9 @@ export default function BeerCollection({
                           }}
                           className="brewed_btn brewed"
                           id={`brewbtn${beer.id}`}
-                        ></div>
+                        >
+                          <p></p>
+                        </div>
                       ) : (
                         <div
                           onClick={(event) => {
@@ -68,7 +70,9 @@ export default function BeerCollection({
                           }}
                           className="brewed_btn"
                           id={`brewbtn${beer.id}`}
-                        ></div>
+                        >
+                          <p></p>
+                        </div>
                       )}
                       {tastedList.includes(beer.name) ? (
                         <div
@@ -82,7 +86,9 @@ export default function BeerCollection({
                           }}
                           className="tasted_btn tasted"
                           id={`tastebtn${beer.id}`}
-                        ></div>
+                        >
+                          <p></p>
+                        </div>
                       ) : (
                         <div
                           onClick={(event) => {
@@ -95,7 +101,9 @@ export default function BeerCollection({
                           }}
                           className="tasted_btn"
                           id={`tastebtn${beer.id}`}
-                        ></div>
+                        >
+                          <p></p>
+                        </div>
                       )}
                     </div>
                   </div>

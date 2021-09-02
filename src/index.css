@@ -146,11 +146,26 @@ a {
 }
 
 .pageLink {
-  text-decoration: none;
   position: absolute;
+  color: white;
   top: 0;
   right: 0;
   margin: 5px;
+  height: 30px;
+  width: 200px;
+  background-color: #07362b;
+  border-radius: 15px;
+}
+
+.pageLink a {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .pagination .previous {
@@ -231,9 +246,6 @@ a {
 }
 
 /*Beer recipe*/
-#recipePageBody {
-  background-color: crimson;
-}
 
 ul {
   list-style-type: none;
@@ -259,10 +271,15 @@ li {
   background-image: url("./images/spice.svg");
 }
 
+.food {
+  background-image: url("./images/fork.svg");
+}
+
 .malt,
 .hop,
 .yeast,
-.addition {
+.addition,
+.food {
   height: 15px;
   width: 15px;
   background-repeat: no-repeat;
@@ -271,7 +288,8 @@ li {
   margin-right: 5px;
 }
 
-#recipeContainer {
+#recipeContainer,
+#beerDetailContainer {
   margin: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -287,27 +305,39 @@ li {
   display: flex;
 }
 
+#beerDetailContainer h5 {
+  float: right;
+}
+
 #recipeHeadContainer img {
   margin: 10px;
   height: 200px;
 }
 
-#recipeHead {
+#recipeHead,
+#beerDetailHead {
   width: 600px;
   display: flex;
 }
 
-#recipeHead img {
+#recipeHead img,
+#beerDetailHead img {
   height: 350px;
 }
 
-#beerDescription {
+.beerDescription {
   margin-left: 30px;
   margin-right: 30px;
   text-align: justify;
 }
 
-#recipeTitle {
+#beerDetailInformationHolder .beerDescription {
+  width: 700px;
+  margin-bottom: 20px;
+}
+
+#recipeTitle,
+#beerDetailTitle {
   margin-top: 0px;
   margin-left: 30px;
   margin-right: 30px;
@@ -315,7 +345,7 @@ li {
   height: 80px;
 }
 
-#recipeParameters {
+.recipeParameters {
   margin-left: 30px;
   font-weight: bold;
   height: 80px;
@@ -330,14 +360,21 @@ li {
   float: right;
 }
 
-#hopList,
-#yeastList,
-#maltList,
-#additionList {
+.hopList,
+.yeastList,
+.maltList,
+.additionList {
   margin: 5px 0 0 0;
   border-top: 1px solid black;
 }
 
 #recipeMethod {
   margin-top: 0px;
+}
+
+#beerDetailContainer .add_btns {
+  float: right;
+  margin-right: 0;
+  display: flex;
+  justify-content: space-between;
 }

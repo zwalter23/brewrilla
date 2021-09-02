@@ -38,8 +38,8 @@ const BeerRecipe = (props) => {
                   <h1> {details.name} </h1>
                   <h2> {details.tagline} </h2>
                 </div>
-                <h4 id="beerDescription"> {details.description} </h4>
-                <div id="recipeParameters">
+                <h4 className="beerDescription"> {details.description} </h4>
+                <div className="recipeParameters">
                   <br></br>
                   <div>
                     <span> ABV: {details.abv}% </span>
@@ -76,7 +76,7 @@ const BeerRecipe = (props) => {
             <div id="recipeIngredientsHolder">
               <h3>Ingredients:</h3>
               <div>
-                <ul id="maltList">
+                <ul className="maltList">
                   {details.ingredients.malt.map((malt) => {
                     return (
                       <li>
@@ -88,7 +88,7 @@ const BeerRecipe = (props) => {
                     );
                   })}
                 </ul>
-                <ul id="hopList">
+                <ul className="hopList">
                   {details.ingredients.hops.map((hop) => {
                     return (
                       <li>
@@ -102,7 +102,7 @@ const BeerRecipe = (props) => {
                   })}
                 </ul>
                 {details.method.twist != null ? (
-                  <ul id="additionList">
+                  <ul className="additionList">
                     {Twist(details.method.twist).map((addition) => {
                       return (
                         <li>
@@ -116,7 +116,7 @@ const BeerRecipe = (props) => {
                   console.log("No twists on this!")
                 )}
 
-                <ul id="yeastList">
+                <ul className="yeastList">
                   <li>
                     <p className="yeast"></p>
                     {details.ingredients.yeast}
@@ -146,15 +146,24 @@ const BeerRecipe = (props) => {
             <br></br>
             <p>{details.brewers_tips}</p>
             <br></br>
-            <h5 id="recipeContributor">{details.contributed_by}</h5>
+            <h5 id="recipeContributor">
+              First brewed: {details.first_brewed} Contributor:{" "}
+              {details.contributed_by}
+            </h5>
           </div>
           <br></br>
           <div>
             <h3>Goes well with:</h3>
             <br></br>
-            <ul>
+            <ul className="foodList">
               {details.food_pairing.map((dish) => {
-                return <li>{dish}</li>;
+                return (
+                  <li>
+                    {" "}
+                    <p className="food"></p>
+                    {dish}
+                  </li>
+                );
               })}
             </ul>
           </div>

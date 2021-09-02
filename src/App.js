@@ -117,16 +117,16 @@ function App() {
             </div>
           </Link>
           <Link to="/brewedlist">
-          <div>
-            <h3>Brewed beers</h3>
-          </div>
+            <div>
+              <h3>Brewed beers</h3>
+            </div>
           </Link>
-          <div>
+          {/* <div>
             <h3>Menu4</h3>
           </div>
           <div>
             <h3>Menu5</h3>
-          </div>
+          </div> */}
           <Link to="/">
             <div>
               <h3>Home</h3>
