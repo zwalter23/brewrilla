@@ -38,13 +38,13 @@ export default function BeerCollection({
                         <h4>{beer.tagline}</h4>
                       </div>
                     </Link>
-                    <div
-                      onClick={() => {
-                        addBrewed(beer.name);
-                      }}
-                      className="add_btns"
-                    >
-                      <div className="brewed_btn"></div>
+                    <div className="add_btns">
+                      <div
+                        onClick={() => {
+                          addBrewed(beer.name);
+                        }}
+                        className="brewed_btn"
+                      ></div>
                       <div
                         onClick={() => {
                           addTasted(beer.name);

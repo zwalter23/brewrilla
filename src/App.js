@@ -22,7 +22,7 @@ function App() {
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
-    if (localData) {
+    if (localData != null) {
       setTasted(JSON.parse(localData));
     } else {
       setTasted([]);
@@ -31,8 +31,8 @@ function App() {
 
   const getBrewedBeerList = () => {
     const localData = localStorage.getItem("brewedBeers");
-    if (localData) {
-      setTasted(JSON.parse(localData));
+    if (localData != null) {
+      setBrewed(JSON.parse(localData));
     } else {
       setBrewed([]);
     }
@@ -115,7 +115,7 @@ function App() {
           )}
         />
         <Route path={`/beer/:id`} exact>
-          <BeerDetails addTasted={addTasted} />
+          <BeerDetails addTasted={addTasted} addBrewed={addBrewed} />
         </Route>
         <Route
           path={`/tastedlist`}
