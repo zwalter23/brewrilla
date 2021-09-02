@@ -182,8 +182,15 @@ a {
   height: 30px;
   width: 30px;
   background-color: #fcfaf9;
+  color: #07362b;
   margin-left: 5px;
   position: relative;
+  transition: 0.3s ease;
+}
+
+.search_btn:hover {
+  color: #fcfaf9;
+  background-color: #07362b;
 }
 
 .search_btn::after {
@@ -192,7 +199,6 @@ a {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  color: #07362b;
 }
 
 /*Beer recipe*/
