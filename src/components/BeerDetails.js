@@ -8,6 +8,7 @@ export const BeerDetails = ({ addTasted }) => {
   const { id } = useParams();
   console.log(addTasted);
   useEffect(() => {
+
     const url = `https://api.punkapi.com/v2/beers/${id}`;
 
     fetchData(url).then((result) => {
@@ -19,6 +20,8 @@ export const BeerDetails = ({ addTasted }) => {
       }
     });
   }, [id]);
+
+
 
   return (
     <div className="div">

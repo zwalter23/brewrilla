@@ -23,7 +23,7 @@ a {
 }
 
 .beer_collection {
-  background-color: #333333;
+  background-color: #ffffff;
   display: flex;
   padding-left: 20px;
 }
@@ -36,7 +36,7 @@ a {
 }
 
 .search_bar {
-  background-color: burlywood;
+  background-color: rgb(255, 255, 255);
   height: 30px;
   width: 30%;
   border-radius: 30px;
@@ -249,3 +249,7 @@ li {
   margin-top: 0px;
 }
 /*Beer recipe end*/
+
+.fact {
+  color: red;
+}
