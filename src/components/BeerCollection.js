@@ -1,6 +1,8 @@
 import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 export default function BeerCollection({
   collection,
@@ -15,12 +17,32 @@ export default function BeerCollection({
   brewedList,
   tastedList,
 }) {
+  const [joke, setJoke] = useState("");
+
+
+  useEffect(() => {
+    getJoke()
+  }, []);
+
+
   const nextPg = () => {
     pageCtrl(1, filter);
   };
 
+
   const previousPg = () => {
     pageCtrl(-1, filter);
+  };
+
+  const getJoke = async () => {
+    const jokeData = await fetch('https://icanhazdadjoke.com/', {
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    const jokeObject = await jokeData.json();
+    console.log(jokeObject.joke)
+    await setJoke(jokeObject.joke)
   };
 
   return (
@@ -103,8 +125,8 @@ export default function BeerCollection({
               );
             })}
           </div>
+          <p>{joke}</p>
         </div>
-
         <div className="pagination">
           {page !== 1 ? (
             <div className="previous active" onClick={previousPg} />

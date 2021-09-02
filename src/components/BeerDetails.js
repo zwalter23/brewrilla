@@ -14,6 +14,7 @@ export const BeerDetails = ({
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   useEffect(() => {
+
     const url = `https://api.punkapi.com/v2/beers/${id}`;
 
     fetchData(url).then((result) => {
@@ -25,6 +26,8 @@ export const BeerDetails = ({
       }
     });
   }, [id]);
+
+
 
   return (
     <div id="recipeContainer">

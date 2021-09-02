@@ -14,6 +14,9 @@ function App() {
   const [filter, setFilter] = useState([]);
   const [brewedBeers, setBrewed] = useState([]);
 
+
+
+
   useEffect(() => {
     getBeersByPage(1);
     getTastedBeerList();
@@ -72,6 +75,8 @@ function App() {
     setCurrentPage(page);
   };
 
+
+
   const changePage = (step, filter) => {
     if (parseInt(step) < 0) {
       if (currentPage !== 1) {
@@ -101,6 +106,7 @@ function App() {
     setFilter(filterToPass);
     getBeersByPage(1, filterToPass);
   };
+
 
   return (
     <Router>
@@ -179,7 +185,7 @@ function App() {
         />
       </div>
     </Router>
-  );
+  )
 }
 
 export default App;

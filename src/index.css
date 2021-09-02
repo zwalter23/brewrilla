@@ -45,7 +45,7 @@ a {
 }
 
 .beer_collection {
-  background-color: #333333;
+  background-color: #ffffff;
   display: flex;
   padding-left: 20px;
 }
@@ -344,3 +344,4 @@ li {
 #recipeMethod {
   margin-top: 0px;
 }
+
