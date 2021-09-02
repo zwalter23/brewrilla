@@ -5,25 +5,57 @@ import { BeerDetails } from "./components/BeerDetails";
 import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
+import { BrewedCollection } from "./components/BrewedCollection";
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [brewedBeers, setBrewed] = useState([]);
 
   useEffect(() => {
     getBeersByPage(1);
     getTastedBeerList();
+    getBrewedBeerList();
   }, []);
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
-    if (localData) {
+    if (localData != null) {
       setTasted(JSON.parse(localData));
     } else {
       setTasted([]);
     }
+  };
+
+  const getBrewedBeerList = () => {
+    const localData = localStorage.getItem("brewedBeers");
+    if (localData != null) {
+      setBrewed(JSON.parse(localData));
+    } else {
+      setBrewed([]);
+    }
+  };
+
+  const removeBrewed = (beer) => {
+    const index = brewedBeers.indexOf(beer);
+    brewedBeers.splice(index, 1);
+    localStorage.setItem("brewedBeers", JSON.stringify(brewedBeers));
+    getBrewedBeerList();
+  };
+
+  const addBrewed = (brewedBeer) => {
+    brewedBeers.push(brewedBeer);
+    localStorage.setItem("brewedBeers", JSON.stringify(brewedBeers));
+    getBrewedBeerList();
+  };
+
+  const removeTasted = (beer) => {
+    const index = tastedBeers.indexOf(beer);
+    tastedBeers.splice(index, 1);
+    localStorage.setItem("tastedBeers", JSON.stringify(tastedBeers));
+    getBrewedBeerList();
   };
 
   const addTasted = (tastedBeer) => {
@@ -84,9 +116,11 @@ function App() {
               <h3>Tasted beers</h3>
             </div>
           </Link>
+          <Link to="/brewedlist">
           <div>
-            <h3>Menu3</h3>
+            <h3>Brewed beers</h3>
           </div>
+          </Link>
           <div>
             <h3>Menu4</h3>
           </div>
@@ -110,16 +144,33 @@ function App() {
               search={searchQuery}
               filter={filter}
               addTasted={addTasted}
+              addBrewed={addBrewed}
+              removeBrewed={removeBrewed}
+              removeTasted={removeTasted}
+              brewedList={brewedBeers}
+              tastedList={tastedBeers}
             />
           )}
         />
         <Route path={`/beer/:id`} exact>
-          <BeerDetails addTasted={addTasted} />
+          <BeerDetails
+            addTasted={addTasted}
+            addBrewed={addBrewed}
+            removeBrewed={removeBrewed}
+            removeTasted={removeTasted}
+            brewedList={brewedBeers}
+            tastedList={tastedBeers}
+          />
         </Route>
         <Route
           path={`/tastedlist`}
           exact
           render={() => <TastedCollection tastedCollection={tastedBeers} />}
+        />
+        <Route
+          path={`/brewedlist`}
+          exact
+          render={() => <BrewedCollection brewedCollection={brewedBeers} />}
         />
         <Route
           path={`/recipe/:id`}

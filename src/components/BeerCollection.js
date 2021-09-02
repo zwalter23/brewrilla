@@ -9,6 +9,11 @@ export default function BeerCollection({
   search,
   filter,
   addTasted,
+  addBrewed,
+  removeTasted,
+  removeBrewed,
+  brewedList,
+  tastedList,
 }) {
   const nextPg = () => {
     pageCtrl(1, filter);
@@ -38,17 +43,60 @@ export default function BeerCollection({
                       </div>
                     </Link>
                     <div className="add_btns">
-                      <div className="brewed_btn">
-                        <p></p>
-                      </div>
-                      <div
-                        onClick={() => {
-                          addTasted(beer.name);
-                        }}
-                        className="tasted_btn"
-                      >
-                        <p></p>
-                      </div>
+                      {brewedList.includes(beer.name) ? (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("brewed");
+                            if (event.target.classList.contains("brewed")) {
+                              addBrewed(beer.name);
+                            } else {
+                              removeBrewed(beer.name);
+                            }
+                          }}
+                          className="brewed_btn brewed"
+                          id={`brewbtn${beer.id}`}
+                        ></div>
+                      ) : (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("brewed");
+                            if (event.target.classList.contains("brewed")) {
+                              addBrewed(beer.name);
+                            } else {
+                              removeBrewed(beer.name);
+                            }
+                          }}
+                          className="brewed_btn"
+                          id={`brewbtn${beer.id}`}
+                        ></div>
+                      )}
+                      {tastedList.includes(beer.name) ? (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("tasted");
+                            if (event.target.classList.contains("tasted")) {
+                              addTasted(beer.name);
+                            } else {
+                              removeTasted(beer.name);
+                            }
+                          }}
+                          className="tasted_btn tasted"
+                          id={`tastebtn${beer.id}`}
+                        ></div>
+                      ) : (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("tasted");
+                            if (event.target.classList.contains("tasted")) {
+                              addTasted(beer.name);
+                            } else {
+                              removeTasted(beer.name);
+                            }
+                          }}
+                          className="tasted_btn"
+                          id={`tastebtn${beer.id}`}
+                        ></div>
+                      )}
                     </div>
                   </div>
                 </div>
