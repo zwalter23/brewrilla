@@ -82,32 +82,16 @@ a {
 
 .add_btns div {
   height: 30px;
-  width: 70px;
+  width: 30px;
   background-color: #07362b;
-  color: #fcfaf9;
   margin-left: 5px;
   position: relative;
   transition: 0.3s ease;
 }
 
 .add_btns div:hover {
-  background-color: #fcfaf9;
-  color: #07362b;
-}
-
-.add_btns div::after {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.brewed_btn::after {
-  content: "Brewed";
-}
-
-.tasted_btn::after {
-  content: "Tasted";
+  filter: invert(1);
+  background-color: black;
 }
 
 .pagination {
@@ -199,6 +183,32 @@ a {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.tasted_btn p {
+  background-image: url("./images/cap.svg");
+}
+
+.brewed_btn p {
+  background-image: url("./images/cooking.svg");
+}
+
+.tasted_btn p,
+.brewed_btn p {
+  height: 25px;
+  width: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: invert(1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.brewed_btn.brewed,
+.tasted_btn.tasted {
+  background-color: green;
 }
 
 /*Beer recipe*/
@@ -311,26 +321,4 @@ li {
 
 #recipeMethod {
   margin-top: 0px;
-}
-/*Beer recipe end*/
-
-.tasted_btn p {
-  background-image: url("./images/cap.svg");
-}
-
-.brewed_btn p {
-  background-image: url("./images/cooking.svg");
-}
-
-.tasted_btn p,
-.brewed_btn p {
-  height: 25px;
-  width: 25px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 20%;
-}
-
-.tasted_btn,
-.brewed_btn {
 }
