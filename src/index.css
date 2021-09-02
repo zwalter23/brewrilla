@@ -118,19 +118,19 @@ a {
   height: 150px;
   width: 15px;
   position: relative;
+  transition: 0.3s ease;
+}
+
+.pagination div:hover {
+  background-color: #ffffff;
 }
 
 .previous::after,
 .next::after {
-  content: "<";
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-}
-
-.next::after {
-  content: ">";
 }
 
 .image {
@@ -143,6 +143,29 @@ a {
   top: 0;
   right: 0;
   margin: 5px;
+}
+
+.pagination .previous {
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .next {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.pagination .previous.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 /*Beer recipe*/
