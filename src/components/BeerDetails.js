@@ -8,7 +8,6 @@ export const BeerDetails = ({ addTasted }) => {
   const { id } = useParams();
   console.log(addTasted);
   useEffect(() => {
-
     const url = `https://api.punkapi.com/v2/beers/${id}`;
 
     fetchData(url).then((result) => {
@@ -21,8 +20,6 @@ export const BeerDetails = ({ addTasted }) => {
     });
   }, [id]);
 
-
-
   return (
     <div id="beerDetailContainer">
       <div className="pageLink">
@@ -30,7 +27,7 @@ export const BeerDetails = ({ addTasted }) => {
       </div>
       {details.name && (
         <>
-          <div className="add_btns">
+          {/* <div className="add_btns">
             <div className="brewed_btn">
               <p></p>
             </div>
@@ -42,7 +39,7 @@ export const BeerDetails = ({ addTasted }) => {
             >
               <p></p>
             </div>
-          </div>
+          </div> */}
           <div id="beerDetailHead">
             <img src={details.image_url} alt=""></img>
             <div id="beerDetailInformationHolder">

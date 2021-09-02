@@ -9,16 +9,18 @@
 
 a {
   text-decoration: none;
+  color: #342a21;
 }
 
 .layout {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  background-color: #bb4430;
 }
 
 .navbar {
-  background-color: #07362b;
+  background-color: #342a21;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,9 +47,13 @@ a {
 }
 
 .beer_collection {
-  background-color: #ffffff;
   display: flex;
+  background-color: #bb4430;
   padding-left: 20px;
+}
+
+#recipePageBody {
+  background-color: #bb4430;
 }
 
 .page_content {
@@ -64,6 +70,8 @@ a {
 }
 
 .card {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 350px;
   height: 250px;
   position: relative;
@@ -74,6 +82,26 @@ a {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 5%;
+}
+
+.collectionContainer {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.collectionItem {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  width: 500px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: #fcfaf9;
+  overflow: hidden;
+  display: grid;
+  gap: 5%;
+  font-size: 20px;
+  padding: 5px;
 }
 
 .img_container img {
@@ -88,7 +116,7 @@ a {
 }
 
 .card_content .card_info {
-  color: #07362b;
+  color: #404544;
 }
 
 .card_content .card_info h2 {
@@ -105,13 +133,20 @@ a {
 .add_btns div {
   height: 30px;
   width: 30px;
-  background-color: #07362b;
+  background-color: #342a21;
   margin-left: 5px;
   position: relative;
   transition: 0.3s ease;
 }
 
-.add_btns div:hover {
+.pageLink,
+.refresh_btn {
+  transition: 0.3s ease;
+}
+
+.add_btns div:hover,
+.pageLink:hover,
+.refresh_btn:hover {
   filter: invert(1);
   background-color: black;
 }
@@ -156,8 +191,18 @@ a {
   margin: 5px;
   height: 30px;
   width: 200px;
-  background-color: #07362b;
-  border-radius: 15px;
+  background-color: #342a21;
+}
+
+.refresh_btn {
+  color: white;
+  background-color: #342a21;
+  text-decoration: none;
+  border: none;
+  padding: 5px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .pageLink a {
@@ -202,16 +247,17 @@ a {
 .search_btn {
   height: 30px;
   width: 30px;
-  background-color: #fcfaf9;
-  color: #07362b;
+  background-color: #342a21;
+  color: white;
   margin-left: 5px;
   position: relative;
   transition: 0.3s ease;
+  font-weight: bold;
 }
 
 .search_btn:hover {
-  color: #fcfaf9;
-  background-color: #07362b;
+  color: black;
+  background-color: #fcfaf9;
 }
 
 .search_btn::after {
@@ -296,12 +342,12 @@ li {
   margin: 50px;
   margin-left: auto;
   margin-right: auto;
-  background-color: blanchedalmond;
   border-radius: 10px;
   padding: 15px;
   width: 90%;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background-color: white;
 }
 
 #recipeHeadContainer {
@@ -380,4 +426,9 @@ li {
   margin-right: 0;
   display: flex;
   justify-content: space-between;
+}
+
+#pun {
+  margin-top: 30px;
+  font-weight: bold;
 }

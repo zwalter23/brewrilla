@@ -3,7 +3,6 @@ import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-
 export default function BeerCollection({
   collection,
   pageCtrl,
@@ -19,30 +18,27 @@ export default function BeerCollection({
 }) {
   const [joke, setJoke] = useState("");
 
-
   useEffect(() => {
-    getJoke()
+    getJoke();
   }, []);
-
 
   const nextPg = () => {
     pageCtrl(1, filter);
   };
-
 
   const previousPg = () => {
     pageCtrl(-1, filter);
   };
 
   const getJoke = async () => {
-    const jokeData = await fetch('https://icanhazdadjoke.com/', {
+    const jokeData = await fetch("https://icanhazdadjoke.com/", {
       headers: {
-        'Accept': 'application/json'
-      }
+        Accept: "application/json",
+      },
     });
     const jokeObject = await jokeData.json();
-    console.log(jokeObject.joke)
-    await setJoke(jokeObject.joke)
+    console.log(jokeObject.joke);
+    await setJoke(jokeObject.joke);
   };
 
   return (
@@ -133,7 +129,7 @@ export default function BeerCollection({
               );
             })}
           </div>
-          <p>{joke}</p>
+          <p id="pun">{joke}</p>
         </div>
         <div className="pagination">
           {page !== 1 ? (
