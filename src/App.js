@@ -108,16 +108,12 @@ function App() {
     getBeersByPage(1, filterToPass);
   };
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
 
   return (
     <Router>
       <div className="layout">
         <div className="navbar">
-          <Link to="/get-random" onClick={refreshPage}>
+          <Link to="/get-random" >
             <div>
               <h3>Random beer</h3>
             </div>
