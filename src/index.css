@@ -313,3 +313,24 @@ li {
   margin-top: 0px;
 }
 /*Beer recipe end*/
+
+.tasted_btn p {
+  background-image: url("./images/cap.svg");
+}
+
+.brewed_btn p {
+  background-image: url("./images/cooking.svg");
+}
+
+.tasted_btn p,
+.brewed_btn p {
+  height: 25px;
+  width: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 20%;
+}
+
+.tasted_btn,
+.brewed_btn {
+}
