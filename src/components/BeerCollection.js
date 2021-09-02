@@ -10,6 +10,10 @@ export default function BeerCollection({
   filter,
   addTasted,
   addBrewed,
+  removeTasted,
+  removeBrewed,
+  brewedList,
+  tastedList,
 }) {
   const nextPg = () => {
     pageCtrl(1, filter);
@@ -39,17 +43,45 @@ export default function BeerCollection({
                       </div>
                     </Link>
                     <div className="add_btns">
+                      {brewedList.includes(beer.name) ? (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("brewed");
+                            if (event.target.classList.contains("brewed")) {
+                              addBrewed(beer.name);
+                            } else {
+                              removeBrewed(beer.name);
+                            }
+                          }}
+                          className="brewed_btn brewed"
+                          id={`brewbtn${beer.id}`}
+                        ></div>
+                      ) : (
+                        <div
+                          onClick={(event) => {
+                            event.target.classList.toggle("brewed");
+                            if (event.target.classList.contains("brewed")) {
+                              addBrewed(beer.name);
+                            } else {
+                              removeBrewed(beer.name);
+                            }
+                          }}
+                          className="brewed_btn"
+                          id={`brewbtn${beer.id}`}
+                        ></div>
+                      )}
+
                       <div
-                        onClick={() => {
-                          addBrewed(beer.name);
-                        }}
-                        className="brewed_btn"
-                      ></div>
-                      <div
-                        onClick={() => {
-                          addTasted(beer.name);
+                        onClick={(event) => {
+                          event.target.classList.toggle("tasted");
+                          if (event.target.classList.contains("tasted")) {
+                            addTasted(beer.name);
+                          } else {
+                            removeTasted(beer.name);
+                          }
                         }}
                         className="tasted_btn"
+                        id={`tastebtn${beer.id}`}
                       ></div>
                     </div>
                   </div>
