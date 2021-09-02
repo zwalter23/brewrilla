@@ -106,8 +106,11 @@ export default function BeerCollection({
         </div>
 
         <div className="pagination">
-          {page !== 1 && <div className="previous" onClick={previousPg} />}
-          <p>Page {page}</p>
+          {page !== 1 ? (
+            <div className="previous active" onClick={previousPg} />
+          ) : (
+            <div className="previous" onClick={previousPg} />
+          )}
           <div className="next" onClick={nextPg} />
         </div>
       </div>

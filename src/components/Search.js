@@ -19,7 +19,7 @@ export default function Search({ search }) {
         <option value="ebc_gt">EBC greater than</option>
         <option value="ebc_lt">EBC lower than</option>
       </select>
-      <button onClick={search}>Go</button>
+      <div className="search_btn" onClick={search}></div>
     </div>
   );
 }

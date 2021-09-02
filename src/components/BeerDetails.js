@@ -27,19 +27,14 @@ export const BeerDetails = ({
   }, [id]);
 
   return (
-    <div className="div">
+    <div id="recipeContainer">
       <div className="pageLink">
-        <Link className="hideDecor" to="/">
-          Home
-        </Link>
-        <br></br>
-        <Link className="hideDecor" to={`/recipe/${details.id}`}>
-          I want to brew this
-        </Link>
+        <Link to={`/recipe/${details.id}`}>I want to brew this</Link>
       </div>
       {details.name && (
         <>
           <div className="add_btns">
+
             {brewedList.includes(details.name) ? (
               <div
                 onClick={(event) => {

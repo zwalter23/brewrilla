@@ -106,12 +106,32 @@ function App() {
     <Router>
       <div className="layout">
         <div className="navbar">
-          <Link to="/beer/random">Random beer</Link>
-          <Link to="/tastedlist">Tasted beers</Link>
-          <Link to="/brewedlist">Brewed beers</Link>
-          <p>Menu4</p>
-          <p>Menu5</p>
-          <Link to="/">Home</Link>
+          <Link to="/beer/random">
+            <div>
+              <h3>Random beer</h3>
+            </div>
+          </Link>
+          <Link to="/tastedlist">
+            <div>
+              <h3>Tasted beers</h3>
+            </div>
+          </Link>
+          <Link to="/brewedlist">
+          <div>
+            <h3>Brewed beers</h3>
+          </div>
+          </Link>
+          <div>
+            <h3>Menu4</h3>
+          </div>
+          <div>
+            <h3>Menu5</h3>
+          </div>
+          <Link to="/">
+            <div>
+              <h3>Home</h3>
+            </div>
+          </Link>
         </div>
         <Route
           path={"/"}

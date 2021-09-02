@@ -19,7 +19,26 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+.navbar div {
+  margin-bottom: 20px;
+  width: 150px;
+  padding: 5px 0;
+  background-color: #fcfaf9;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  color: #07362b;
+  transition: 0.3s ease;
+}
+
+.navbar div:hover {
+  filter: invert(1);
+  color: black;
 }
 
 .beer_collection {
@@ -33,14 +52,6 @@ a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-}
-
-.search_bar {
-  background-color: burlywood;
-  height: 30px;
-  width: 30%;
-  border-radius: 30px;
-  margin-bottom: 20px;
 }
 
 .cards {
@@ -73,6 +84,14 @@ a {
   justify-content: space-between;
 }
 
+.card_content .card_info {
+  color: #07362b;
+}
+
+.card_content .card_info h2 {
+  margin-bottom: 10px;
+}
+
 .card_content .add_btns {
   width: 100%;
   display: flex;
@@ -86,15 +105,12 @@ a {
   background-color: #07362b;
   margin-left: 5px;
   position: relative;
+  transition: 0.3s ease;
 }
 
-.add_btns div::after {
-  content: "+";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  color: #fcfaf9;
+.add_btns div:hover {
+  filter: invert(1);
+  background-color: black;
 }
 
 .pagination {
@@ -110,19 +126,19 @@ a {
   height: 150px;
   width: 15px;
   position: relative;
+  transition: 0.3s ease;
+}
+
+.pagination div:hover {
+  background-color: #ffffff;
 }
 
 .previous::after,
 .next::after {
-  content: "<";
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-}
-
-.next::after {
-  content: ">";
 }
 
 .image {
@@ -135,6 +151,83 @@ a {
   top: 0;
   right: 0;
   margin: 5px;
+}
+
+.pagination .previous {
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .next {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.pagination .previous.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#search_bar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.search_btn {
+  height: 30px;
+  width: 30px;
+  background-color: #fcfaf9;
+  color: #07362b;
+  margin-left: 5px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.search_btn:hover {
+  color: #fcfaf9;
+  background-color: #07362b;
+}
+
+.search_btn::after {
+  content: "GO";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.tasted_btn p {
+  background-image: url("./images/cap.svg");
+}
+
+.brewed_btn p {
+  background-image: url("./images/cooking.svg");
+}
+
+.tasted_btn p,
+.brewed_btn p {
+  height: 25px;
+  width: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: invert(1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.brewed_btn.brewed,
+.tasted_btn.tasted {
+  background-color: green;
 }
 
 /*Beer recipe*/
@@ -162,9 +255,14 @@ li {
   background-image: url("./images/beaker.svg");
 }
 
+.addition {
+  background-image: url("./images/spice.svg");
+}
+
 .malt,
 .hop,
-.yeast {
+.yeast,
+.addition {
   height: 15px;
   width: 15px;
   background-repeat: no-repeat;
@@ -234,7 +332,8 @@ li {
 
 #hopList,
 #yeastList,
-#maltList {
+#maltList,
+#additionList {
   margin: 5px 0 0 0;
   border-top: 1px solid black;
 }
@@ -242,4 +341,3 @@ li {
 #recipeMethod {
   margin-top: 0px;
 }
-/*Beer recipe end*/
