@@ -35,14 +35,6 @@ a {
   justify-content: center;
 }
 
-.search_bar {
-  background-color: burlywood;
-  height: 30px;
-  width: 30%;
-  border-radius: 30px;
-  margin-bottom: 20px;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -73,6 +65,14 @@ a {
   justify-content: space-between;
 }
 
+.card_content .card_info {
+  color: #07362b;
+}
+
+.card_content .card_info h2 {
+  margin-bottom: 10px;
+}
+
 .card_content .add_btns {
   width: 100%;
   display: flex;
@@ -81,12 +81,18 @@ a {
 }
 
 .add_btns div {
-  height: 40px;
-  width: 40px;
-  background-color: yellow;
-  margin: 5px;
+  height: 30px;
+  width: 70px;
+  background-color: #07362b;
+  color: #fcfaf9;
+  margin-left: 5px;
   position: relative;
-  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.add_btns div:hover {
+  background-color: #fcfaf9;
+  color: #07362b;
 }
 
 .add_btns div::after {
@@ -94,7 +100,14 @@ a {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  color: green;
+}
+
+.brewed_btn::after {
+  content: "Brewed";
+}
+
+.tasted_btn::after {
+  content: "Tasted";
 }
 
 .pagination {
@@ -110,19 +123,19 @@ a {
   height: 150px;
   width: 15px;
   position: relative;
+  transition: 0.3s ease;
+}
+
+.pagination div:hover {
+  background-color: #ffffff;
 }
 
 .previous::after,
 .next::after {
-  content: "<";
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-}
-
-.next::after {
-  content: ">";
 }
 
 .image {
@@ -135,6 +148,57 @@ a {
   top: 0;
   right: 0;
   margin: 5px;
+}
+
+.pagination .previous {
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .next {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.pagination .previous.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#search_bar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.search_btn {
+  height: 30px;
+  width: 30px;
+  background-color: #fcfaf9;
+  color: #07362b;
+  margin-left: 5px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.search_btn:hover {
+  color: #fcfaf9;
+  background-color: #07362b;
+}
+
+.search_btn::after {
+  content: "GO";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 /*Beer recipe*/
