@@ -73,6 +73,14 @@ a {
   justify-content: space-between;
 }
 
+.card_content .card_info {
+  color: #07362b;
+}
+
+.card_content .card_info h2 {
+  margin-bottom: 10px;
+}
+
 .card_content .add_btns {
   width: 100%;
   display: flex;
