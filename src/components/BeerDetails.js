@@ -34,13 +34,17 @@ export const BeerDetails = ({ addTasted }) => {
       {details.name && (
         <>
           <div className="add_btns">
-            <div className="brewed_btn"></div>
+            <div className="brewed_btn">
+              <p></p>
+            </div>
             <div
               onClick={() => {
                 addTasted(details.name);
               }}
               className="tasted_btn"
-            ></div>
+            >
+              <p></p>
+            </div>
           </div>
           <img className="image" src={details.image_url} alt=""></img>
           <h1>{details.name}</h1>
