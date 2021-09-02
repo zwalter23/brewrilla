@@ -21,15 +21,9 @@ export const BeerDetails = ({ addTasted }) => {
   }, [id]);
 
   return (
-    <div className="div">
+    <div id="recipeContainer">
       <div className="pageLink">
-        <Link className="hideDecor" to="/">
-          Home
-        </Link>
-        <br></br>
-        <Link className="hideDecor" to={`/recipe/${details.id}`}>
-          I want to brew this
-        </Link>
+        <Link to={`/recipe/${details.id}`}>I want to brew this</Link>
       </div>
       {details.name && (
         <>
