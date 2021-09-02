@@ -6,6 +6,7 @@ import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
 import { BrewedCollection } from "./components/BrewedCollection";
+import { RandomBeer } from "./components/RandomBeer";
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
@@ -107,12 +108,16 @@ function App() {
     getBeersByPage(1, filterToPass);
   };
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
 
   return (
     <Router>
       <div className="layout">
         <div className="navbar">
-          <Link to="/beer/random">
+          <Link to="/get-random" onClick={refreshPage}>
             <div>
               <h3>Random beer</h3>
             </div>
@@ -181,6 +186,19 @@ function App() {
         <Route
           path={`/recipe/:id`}
           render={(props) => <BeerRecipe {...props} />}
+          exact
+        />
+        <Route
+          path={'/get-random'}
+          render={(props) => <RandomBeer
+            key={props.match.params.id}
+            addTasted={addTasted}
+            addBrewed={addBrewed}
+            removeBrewed={removeBrewed}
+            removeTasted={removeTasted}
+            brewedList={brewedBeers}
+            tastedList={tastedBeers}
+          />}
           exact
         />
       </div>
