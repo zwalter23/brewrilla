@@ -38,6 +38,7 @@ a {
 
 .navbar div:hover {
   filter: invert(1);
+  color: black;
 }
 
 .beer_collection {
