@@ -294,6 +294,13 @@ a {
   background-color: green;
 }
 
+.brewed_btn.brewed:hover,
+.tasted_btn.tasted:hover {
+  background-color: green;
+  transform: scale(1.1);
+  filter: invert(0);
+}
+
 /*Beer recipe*/
 
 ul {
