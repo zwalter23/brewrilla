@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y4ehhUpqGvFJDUddTL+hzCvFMNvXUOJtXRCNTVp7ms5YAOl0nTqerE7Gzlcj+9GY4csNTzIo1PRpRrb8r5OfPQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HUAWEI\\Documents\\GitHub\\brewrilla\\.Net core\\Brewrilla\\Brewrilla.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
