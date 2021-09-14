@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Brewrilla
 {
@@ -27,11 +28,11 @@ namespace Brewrilla
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Brewrilla", Version = "v1" });
-            });
+            //services.AddDbContext<Models.BeerDbContext>(options =>
+
+            //   options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
