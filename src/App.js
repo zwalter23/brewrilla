@@ -6,6 +6,7 @@ import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
 import { BrewedCollection } from "./components/BrewedCollection";
+import { Login } from "./components/Login";
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
@@ -127,14 +128,15 @@ function App() {
           <div>
             <h3>Menu5</h3>
           </div>
-          <Link to="/">
+          <Link to="/home">
             <div>
               <h3>Home</h3>
             </div>
           </Link>
         </div>
+        <Route path={"/login"} exact render={() => <Login />} />
         <Route
-          path={"/"}
+          path={"/home"}
           exact
           render={() => (
             <BeerCollection
