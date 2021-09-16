@@ -14,12 +14,8 @@ function App() {
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
   const [brewedBeers, setBrewed] = useState([]);
-  const [userdata, setUserdata] = useState([
-    {
-      key: "zsofi",
-      value: "11",
-    },
-  ]);
+  const [usernames, setUsernames] = useState(["zsofi", "kristof", "walter"]);
+  const [passwords, setPasswords] = useState(["zsofi", "kristof", "walter"]);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,12 +23,13 @@ function App() {
     getBeersByPage(1);
     getTastedBeerList();
     getBrewedBeerList();
-  }, []);
-
-  const login = () => {
-    console.log(username);
-    console.log(password);
-  };
+    if (usernames.includes(username)) {
+      if (passwords[usernames.indexOf(username)] === password) {
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("username", username);
+      }
+    }
+  }, [usernames, username, password, passwords]);
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
@@ -151,11 +148,7 @@ function App() {
           path={"/login"}
           exact
           render={() => (
-            <Login
-              login={login}
-              setUserName={setUserName}
-              setPassword={setPassword}
-            />
+            <Login setUserName={setUserName} setPassword={setPassword} />
           )}
         />
         <Route
@@ -174,6 +167,7 @@ function App() {
               removeTasted={removeTasted}
               brewedList={brewedBeers}
               tastedList={tastedBeers}
+              username={username}
             />
           )}
         />
