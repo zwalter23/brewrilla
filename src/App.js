@@ -14,12 +14,25 @@ function App() {
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
   const [brewedBeers, setBrewed] = useState([]);
+  const [userdata, setUserdata] = useState([
+    {
+      key: "zsofi",
+      value: "11",
+    },
+  ]);
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     getBeersByPage(1);
     getTastedBeerList();
     getBrewedBeerList();
   }, []);
+
+  const login = () => {
+    console.log(username);
+    console.log(password);
+  };
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
@@ -134,7 +147,17 @@ function App() {
             </div>
           </Link>
         </div>
-        <Route path={"/login"} exact render={() => <Login />} />
+        <Route
+          path={"/login"}
+          exact
+          render={() => (
+            <Login
+              login={login}
+              setUserName={setUserName}
+              setPassword={setPassword}
+            />
+          )}
+        />
         <Route
           path={"/home"}
           exact
