@@ -1,14 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import fetchData from "./fetchData";
 
-export const BeerDetails = ({ addTasted }) => {
+export const RandomBeer = ({
+  addTasted,
+  addBrewed,
+  removeBrewed,
+  removeTasted,
+  brewedList,
+  tastedList,
+}) => {
   const [details, setDetails] = useState([]);
-  const { id } = useParams();
-  console.log(addTasted);
   useEffect(() => {
-    const url = `https://api.punkapi.com/v2/beers/${id}`;
+    const url = "https://api.punkapi.com/v2/beers/random";
 
     fetchData(url).then((result) => {
       try {
@@ -18,7 +23,11 @@ export const BeerDetails = ({ addTasted }) => {
         console.log("Check if there is a beer with the given ID");
       }
     });
-  }, [id]);
+  }, []);
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <div id="beerDetailContainer">
@@ -27,8 +36,11 @@ export const BeerDetails = ({ addTasted }) => {
       </div>
       {details.name && (
         <>
-          {/* <div className="add_btns">
-            <div className="brewed_btn">
+          <div className="add_btns">
+            <button className="refresh_btn" onClick={refreshPage}>
+              Not today! Give me another!
+            </button>
+            {/* <div className="brewed_btn">
               <p></p>
             </div>
             <div
@@ -38,8 +50,8 @@ export const BeerDetails = ({ addTasted }) => {
               className="tasted_btn"
             >
               <p></p>
-            </div>
-          </div> */}
+            </div> */}
+          </div>
           <div id="beerDetailHead">
             <img src={details.image_url} alt=""></img>
             <div id="beerDetailInformationHolder">
@@ -79,3 +91,4 @@ export const BeerDetails = ({ addTasted }) => {
     </div>
   );
 };
+export default RandomBeer;

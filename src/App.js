@@ -7,6 +7,8 @@ import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
 import { BrewedCollection } from "./components/BrewedCollection";
 import { Login } from "./components/Login";
+import { RandomBeer } from "./components/RandomBeer";
+
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
@@ -18,6 +20,9 @@ function App() {
   const [passwords, setPasswords] = useState(["zsofi", "kristof", "walter"]);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+
+
 
   useEffect(() => {
     getBeersByPage(1);
@@ -83,6 +88,8 @@ function App() {
     setCurrentPage(page);
   };
 
+
+
   const changePage = (step, filter) => {
     if (parseInt(step) < 0) {
       if (currentPage !== 1) {
@@ -113,11 +120,12 @@ function App() {
     getBeersByPage(1, filterToPass);
   };
 
+
   return (
     <Router>
       <div className="layout">
         <div className="navbar">
-          <Link to="/beer/random">
+          <Link to="/get-random" >
             <div>
               <h3>Random beer</h3>
             </div>
@@ -132,12 +140,13 @@ function App() {
               <h3>Brewed beers</h3>
             </div>
           </Link>
-          <div>
+          {/* <div>
             <h3>Menu4</h3>
           </div>
           <div>
             <h3>Menu5</h3>
-          </div>
+
+          </div> */}
           <Link to="/home">
             <div>
               <h3>Home</h3>
@@ -196,9 +205,22 @@ function App() {
           render={(props) => <BeerRecipe {...props} />}
           exact
         />
+        <Route
+          path={'/get-random'}
+          render={(props) => <RandomBeer
+            key={props.match.params.id}
+            addTasted={addTasted}
+            addBrewed={addBrewed}
+            removeBrewed={removeBrewed}
+            removeTasted={removeTasted}
+            brewedList={brewedBeers}
+            tastedList={tastedBeers}
+          />}
+          exact
+        />
       </div>
     </Router>
-  );
+  )
 }
 
 export default App;
