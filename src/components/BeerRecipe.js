@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import fetchData from "./fetchData";
 
 const BeerRecipe = (props) => {
@@ -32,7 +31,7 @@ const BeerRecipe = (props) => {
           <br></br>
           <div id="recipeHeadContainer">
             <div id="recipeHead">
-              <img src={details.image_url}></img>
+              <img alt="beer" src={details.image_url}></img>
               <div id="recipeInformationHolder">
                 <div id="recipeTitle">
                   <h1> {details.name} </h1>

@@ -45,6 +45,13 @@ export default function BeerCollection({
     <>
       <div className="beer_collection">
         <div className="page_content">
+          <div>
+            {localStorage.getItem("isLoggedIn") ? (
+              <h1>Welcome! {localStorage.getItem("username")}</h1>
+            ) : (
+              <a href="/login">Log in!</a>
+            )}
+          </div>
           <Search search={search} />
           <div className="cards">
             {collection.map((beer) => {

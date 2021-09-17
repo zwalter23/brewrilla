@@ -6,7 +6,9 @@ import BeerRecipe from "./components/BeerRecipe";
 import fetchData from "./components/fetchData";
 import { TastedCollection } from "./components/TastedCollection";
 import { BrewedCollection } from "./components/BrewedCollection";
+import { Login } from "./components/Login";
 import { RandomBeer } from "./components/RandomBeer";
+
 
 function App() {
   const [beers, setBeerCollection] = useState([]);
@@ -14,6 +16,10 @@ function App() {
   const [tastedBeers, setTasted] = useState([]);
   const [filter, setFilter] = useState([]);
   const [brewedBeers, setBrewed] = useState([]);
+  const [usernames, setUsernames] = useState(["zsofi", "kristof", "walter"]);
+  const [passwords, setPasswords] = useState(["zsofi", "kristof", "walter"]);
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
 
 
@@ -22,7 +28,13 @@ function App() {
     getBeersByPage(1);
     getTastedBeerList();
     getBrewedBeerList();
-  }, []);
+    if (usernames.includes(username)) {
+      if (passwords[usernames.indexOf(username)] === password) {
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("username", username);
+      }
+    }
+  }, [usernames, username, password, passwords]);
 
   const getTastedBeerList = () => {
     const localData = localStorage.getItem("tastedBeers");
@@ -133,15 +145,23 @@ function App() {
           </div>
           <div>
             <h3>Menu5</h3>
+
           </div> */}
-          <Link to="/">
+          <Link to="/home">
             <div>
               <h3>Home</h3>
             </div>
           </Link>
         </div>
         <Route
-          path={"/"}
+          path={"/login"}
+          exact
+          render={() => (
+            <Login setUserName={setUserName} setPassword={setPassword} />
+          )}
+        />
+        <Route
+          path={"/home"}
           exact
           render={() => (
             <BeerCollection
@@ -156,6 +176,7 @@ function App() {
               removeTasted={removeTasted}
               brewedList={brewedBeers}
               tastedList={tastedBeers}
+              username={username}
             />
           )}
         />
